@@ -24,14 +24,14 @@ class CharacterPanel extends React.Component {
         else body = <CharacterInventory items={this.state.items} />
 
         return(
-            <Modal style={{'maxWidth': '100%', 'maxHeight': '100%', 'overflow': 'auto'}} show={true} onHide={this.onClose.bind(this)} dialogClassName='character-panel'>
-                <Modal.Header closeButton>
+            <Modal style={{'maxWidth': '100%', 'maxHeight': '100%', 'overflow': 'auto'}} show={true} onHide={this.onClose.bind(this)} contentClassName="bg-dark text-white" dialogClassName='character-panel'>
+                <Modal.Header className="bg-dark text-light">
                     <Modal.Title>{this.props.character}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body style={{'width': '600px', 'height': '531px'}}>
+                <Modal.Body className="bg-dark text-light" style={{'width': '600px', 'height': '531px'}}>
                     {body}
                 </Modal.Body>
-                <Modal.Footer>
+                <Modal.Footer className="bg-dark text-light">
                     <Button variant="secondary" onClick={this.onClose.bind(this)}>Close</Button>
                 </Modal.Footer>
             </Modal>

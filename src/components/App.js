@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header'
 import Ladder from './Ladder'
 import CharacterPanel from './CharacterPanel'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import '../custom.scss'
 import fetch from 'node-fetch';
 
 class App extends React.Component {
@@ -15,7 +15,7 @@ class App extends React.Component {
 
   state = {
     ladders: [],
-    selectedLadder: '',
+    selectedLadder: 'Standard',
     entries: [],
     selectedCharacter: '',
     selectedAccount: ''
@@ -24,7 +24,7 @@ class App extends React.Component {
   render () {
       return (
       <div className="App">
-        <Header ladders={this.state.ladders} onLadderChange={this.onLadderChange} />
+        <Header ladders={this.state.ladders} selectedLadder={this.state.selectedLadder} onLadderChange={this.onLadderChange} />
         <Ladder entries={this.state.entries} onCharacterSelect={this.onCharacterSelect} />
         <CharacterPanel onClose={this.onCloseCharacterPanel} account={this.state.selectedAccount} character={this.state.selectedCharacter}/>
       </div>
@@ -40,6 +40,8 @@ class App extends React.Component {
         })
       })
       .catch(console.log)
+
+      this.onLadderChange ("Standard")
   }
 
   onLadderChange (newLadder) {
