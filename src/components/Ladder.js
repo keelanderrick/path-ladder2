@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table'
 class Ladder extends React.Component {
     render () {
         return (
-            <Table style={{'margin-bottom': '0'}} variant="dark" striped bordered hover>
+            <Table style={{'marginBottom': '0'}} variant="dark" striped bordered hover>
                 <thead>
                     <tr>
                         <th style={{'width': "10%"}}>Rank</th>
@@ -20,9 +20,9 @@ class Ladder extends React.Component {
                                 <tr key={entry.character.name}>
                                     <th>{entry.rank}</th>
                                     <th>{entry.character.level}</th>
-                                    <th><a href="/#" value={entry} className="ladder-character-name" class="text-light underline" onClick={this.selectCharacter.bind(this, entry)}>{entry.character.name}</a></th>
+                                    <th><a href="/#" value={entry} className="ladder-character-name text-light underline" onClick={this.selectCharacter.bind(this, entry)}>{entry.character.name}</a></th>
                                     <th>{entry.character.class}</th>
-                                    <th><a value={entry.account.name} class="text-light underline" target="_blank" rel="noopener noreferrer" href={`https://www.pathofexile.com/account/view-profile/${entry.account.name}`}>{entry.account.name}</a></th>
+                                    <th><a value={entry.account.name} className="text-light underline" target="_blank" rel="noopener noreferrer" href={`https://www.pathofexile.com/account/view-profile/${entry.account.name}`}>{entry.account.name}</a></th>
                                 </tr> 
                             )
                     })}

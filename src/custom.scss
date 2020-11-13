@@ -13,6 +13,10 @@
   text-decoration: underline;
 }
 
+.modal-content {
+  width: -moz-fit-content;
+}
+
 body {
   margin: 0;
   background-color: $dark;
@@ -118,48 +122,26 @@ code {
   color: RGB(179,212,235)
 }
 
-.weapon-swap-button {
-  position: absolute; 
-  bottom: 446px;
-  left: 467px;
-}
-
-.left-weapon-swap-background { 
-  position: absolute;
-  bottom: 364px;
-  left: 190px;
-}
-
-.right-weapon-swap-background {
-  position: absolute;
-  bottom: 364px;
-  left: 391px;
-}
-
 .item0 {
   background-color: RGBA(200,200,190,0.5);
-  position: absolute;
   display: flex;
   border: 1px solid RGB(200,200,190);
 }
 
 .item1 {
   background-color: RGBA(135,135,255, 0.5);
-  position: absolute;
   display: flex;
   border: 1px solid RGB(135,135,255);
 }
 
 .item2 {
   background-color: RGBA(189, 189, 87, 0.5);
-  position: absolute;
   display: flex;
   border: 1px solid RGB(189, 189, 87);
 }
 
 .item3 {
   background-color: RGBA(65,24,9, 0.5);
-  position: absolute;
   display: flex;
   border: 1px solid RGB(182, 98, 27);
 }
@@ -168,97 +150,146 @@ code {
   margin: auto;
   max-width: 100%;
   max-height: 100%;
+  width: 100%;
 }
 
-.belt {
-  left: 269px;
-  bottom: 143px;
+.character-items {
+  border: 1px solid white;
+  padding: 5px;
+  background-color: RGBA(0,0,0,0.25);
+  display:grid;
+  gap: 0.25rem;
+  grid-template-rows: repeat(8, 4rem);
+  grid-template-columns: repeat(8, 4rem);
+  grid-template-areas: 
+    "weapon weapon weapon2 helm helm offhand2 offhand offhand"
+    "weapon weapon weapon2 helm helm offhand2 offhand offhand" 
+    "weapon weapon . bodyarmour bodyarmour amulet offhand offhand" 
+    "weapon weapon ring bodyarmour bodyarmour ring2 offhand offhand" 
+    ". gloves gloves bodyarmour bodyarmour boots boots ." 
+    ". gloves gloves belt belt boots boots ." 
+    "flask flask flask flask flask flask flask flask" 
+    "flask flask flask flask flask flask flask flask"
 }
 
-.bodyarmour {
-  left: 268px;
-  bottom: 201px;
+.gems {
+  margin-top: 5px;
+  padding: 5px;
+  border: 1px solid white;
+  background-color: RGBA(0,0,0,0.25);
 }
 
-.ring {
-  left: 198px;
-  bottom: 248px;
+.flasks {
+  gap: inherit;
+  grid-area: flask;
+  grid-template-columns: repeat(5, 4rem);
+  display: grid;
+  margin: auto;
+  height: 100%;
 }
 
-.ring2 {
-  left: 385px;
-  bottom: 248px;
-}
-
-.amulet {
-  left: 385px;
-  bottom: 307px;
-}
-
-.gloves {
-  left: 151px;
-  bottom: 142px;
-}
-
-.boots {
-  left: 384px;
-  bottom: 142px;
-}
-
-.helm {
-  left: 268px;
-  bottom: 354px;
-}
-
-.flask1 {
-  left: 194px;
-  bottom: 36px;
-}
-
-.flask2 {
-  left: 244px;
-  bottom: 36px;
-}
-
-.flask3 {
-  left: 294px;
-  bottom: 36px;
-}
-
-.flask4 {
-  left: 344px;
-  bottom: 36px;
-}
-
-.flask5 {
-  left: 394px;
-  bottom: 36px;
+.flask {
+  height: 100%;
+  width: 100%;
 }
 
 .weapon {
-  left: 81px;
-  bottom: 248px;
-  height: 188px;
-  width: 94px;
+  grid-area: weapon;
 }
 
-.offhand {
-  width: 94px;
-  left: 454px;
-  bottom: 248px;
-  height: 188px;
+.belt {
+  grid-area: belt;
 }
 
 .weapon2 {
-  left: 194px;
-  bottom: 369px;
-  width: 37px;
-  height: 71px;
+  grid-area: weapon2;
 }
 
-.offhand2 {
-  left: 395px;
-  bottom: 369px;
-  width: 37px;
-  height: 71px;
+.helm {
+  grid-area: helm;
+}
+
+.offhand2 { 
+  grid-area: offhand2;
+}
+
+.offhand { 
+  grid-area: offhand;
+}
+
+.bodyarmour { 
+  grid-area: bodyarmour;
+}
+
+.boots { 
+  grid-area: boots;
+}
+
+.gloves { 
+  grid-area: gloves;
+}
+
+.amulet { 
+  grid-area: amulet;
+}
+
+.ring2 { 
+  grid-area: ring2;
+}
+
+.ring { 
+  grid-area: ring;
+}
+
+.gems > div:last-child {
+  border-bottom: none;
+}
+
+.gem-group {
+  border-bottom: 1px solid white;
+  padding: 5px;
+}
+
+.gem-group-item-slot {
+  float: right;
+  color: $secondary;
+}
+
+.linked-gems > div {
+  border-left: 1px solid $secondary
+}
+
+.linked-gems > div:only-child, .linked-gems > div:first-child, .linked-gems > div:last-child {
+  border-left: none;
+}
+
+.linked-gems > div::before {
+  position: relative;
+  content: "";
+  top: -2px;
+  height: 14px;
+  width: 15px;
+  border-bottom: 1px solid $secondary;
+  display: inline-block;
+  left: 0px;
+  margin-right: 5px;
+}
+
+.linked-gems > div:first-child::before, .linked-gems > div:last-child::before {
+  height: 20px;
+  border-left: 1px solid $secondary;
+}
+
+.linked-gems > div:first-child::before {
+  top: 14px;
+  border-bottom: none;
+  border-top: 1px solid $secondary;
+}
+
+.linked-gems > div:only-child::before {
+  border-left: none;
+}
+
+.gem {
+  margin-left: 5px;
 }

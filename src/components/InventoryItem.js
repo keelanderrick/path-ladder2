@@ -5,7 +5,7 @@ import Tooltip from 'react-bootstrap/Tooltip';
 
 class InventoryItem extends Component {
     render () {
-        const className = (this.props.item.inventoryId + this.props.flaskIndex).toLowerCase() + ' item' + this.props.item.frameType;
+        const className = (this.props.item.inventoryId).toLowerCase() + ' item' + this.props.item.frameType;
         if(className === ' item')
             return null;
         return(
@@ -16,7 +16,6 @@ class InventoryItem extends Component {
                 trigger={['hover', 'focus']}
             >
             <div className={className}>
-
                 <Image className='item-image' src={this.props.item.icon} />
             </div>
             </OverlayTrigger>

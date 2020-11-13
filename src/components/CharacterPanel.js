@@ -3,6 +3,7 @@ import fetch from 'node-fetch';
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import CharacterInventory from './CharacterInventory'
+import CharacterGems from './CharacterGems'
 
 class CharacterPanel extends React.Component {
     state = {
@@ -18,17 +19,17 @@ class CharacterPanel extends React.Component {
         var body = null;
 
         if(this.state.loaded === false)
-            body = <div style={{'display': 'flex', 'height': 'inherit', 'justifyContent': 'center', 'alignItems': 'center'}}>Loading items...</div>
+            body = <div style={{'display': 'flex', 'height': 'inherit', 'justifyContent': 'center', 'alignItems': 'center', 'width': '540px'}}>Loading items...</div>
         else if (this.state.failedToLoad === true)
-            body = <div style={{'display': 'flex', 'height': 'inherit', 'justifyContent': 'center', 'alignItems': 'center'}}>Failed to load items, this account is likely private</div>
-        else body = <CharacterInventory items={this.state.items} />
+            body = <div style={{'display': 'flex', 'height': 'inherit', 'justifyContent': 'center', 'alignItems': 'center', 'width': '540px'}}>Failed to load items, this account is likely private</div>
+        else body = <div><CharacterInventory items={this.state.items} /><CharacterGems items={this.state.items} /></div>
 
         return(
-            <Modal style={{'maxWidth': '100%', 'maxHeight': '100%', 'overflow': 'auto'}} show={true} onHide={this.onClose.bind(this)} contentClassName="bg-dark text-white" dialogClassName='character-panel'>
+            <Modal style={{'maxWidth': '100%', 'maxHeight': '100%', 'overflow': 'auto'}} show={true} onHide={this.onClose.bind(this)} dialogClassName='character-panel'>
                 <Modal.Header className="bg-dark text-light">
                     <Modal.Title>{this.props.character}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body className="bg-dark text-light" style={{'width': '600px', 'height': '531px'}}>
+                <Modal.Body className="bg-dark text-light">
                     {body}
                 </Modal.Body>
                 <Modal.Footer className="bg-dark text-light">

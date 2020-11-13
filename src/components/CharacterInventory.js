@@ -7,16 +7,22 @@ class CharacterInventory extends Component {
     }
 
     render () {
-        this.flaskIndex = 0;
         return(
-            <div style={{backgroundColor: 'black'}}>
+            <div className="character-items">
                 {this.state.items.map((item) => {
-                    if(item.inventoryId === 'Flask') {
-                        this.flaskIndex++;
-                        return(<InventoryItem key={item.id} item={item} flaskIndex={this.flaskIndex} />)
+                    if(item.inventoryId !== 'Flask') {
+                        return(<InventoryItem key={item.id} item={item} />)
                     }
-                    return(<InventoryItem key={item.id} item={item} flaskIndex='' />)
+                    return(null)
                 })}
+                <div className="flasks">
+                    {this.state.items.map((item) => {
+                        if(item.inventoryId === 'Flask') {
+                            return(<InventoryItem key={item.id} item={item} />)
+                        }
+                        return(null)
+                    })}
+                </div>
             </div>
         )
     }
