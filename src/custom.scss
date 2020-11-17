@@ -17,6 +17,17 @@
   width: -moz-fit-content;
 }
 
+.ladder-navigator {
+  display: flex;
+  margin: auto;
+  width: 10%;
+}
+
+.ladder-navigator > button {
+  margin: 0.25rem;
+}
+
+
 body {
   margin: 0;
   background-color: $dark;
