@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter as Router} from 'react-router-dom'
 import './custom.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+ReactDOM.render(<Router basename="https://keelanderrick.github.io/path-ladder/"><App /></Router>,
   document.getElementById('root')
 );
 
