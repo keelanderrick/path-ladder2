@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter as Router} from 'react-router-dom'
 import './custom.css';
-import Home from './components/Home';
+import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<Router basename="https://keelanderrick.github.io/path-ladder/"><Home /></Router>,
+ReactDOM.render(<Router basename="https://keelanderrick.github.io/path-ladder/"><App /></Router>,
   document.getElementById('root')
 );
 
