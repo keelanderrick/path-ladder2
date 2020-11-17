@@ -2,7 +2,6 @@ import React from 'react';
 import Header from './Header'
 import Ladder from './Ladder'
 import CharacterPanel from './CharacterPanel'
-import LadderNavigator from './LadderNavigator'
 import '../custom.scss'
 import fetch from 'node-fetch';
 
@@ -12,8 +11,6 @@ class App extends React.Component {
     this.onLadderChange = this.onLadderChange.bind(this);
     this.onCharacterSelect = this.onCharacterSelect.bind(this);
     this.onCloseCharacterPanel = this.onCloseCharacterPanel.bind(this);
-    this.onPageChange = this.onPageChange.bind(this);
-    this.onLimitChange = this.onLimitChange.bind(this);
   }
 
   state = {
@@ -21,17 +18,14 @@ class App extends React.Component {
     selectedLadder: 'Standard',
     entries: [],
     selectedCharacter: '',
-    selectedAccount: '',
-    currentPage: 1,
-    ladderLimit: 20
+    selectedAccount: ''
   }
 
   render () {
       return (
       <div className="App">
-        <Header ladderLimit={this.state.ladderLimit} ladders={this.state.ladders} selectedLadder={this.state.selectedLadder} onLimitChange={this.onLimitChange} onLadderChange={this.onLadderChange} />
+        <Header ladders={this.state.ladders} selectedLadder={this.state.selectedLadder} onLadderChange={this.onLadderChange} />
         <Ladder entries={this.state.entries} onCharacterSelect={this.onCharacterSelect} />
-        <LadderNavigator onPageChange={this.onPageChange} currentPage={this.state.currentPage}/>
         <CharacterPanel onClose={this.onCloseCharacterPanel} account={this.state.selectedAccount} character={this.state.selectedCharacter}/>
       </div>
     )
@@ -75,30 +69,6 @@ class App extends React.Component {
       selectedCharacter: '',
       selectedAccount: ''
     })
-  }
-
-  onPageChange (page) {
-    fetch(`https://guarded-falls-96614.herokuapp.com/http://api.pathofexile.com/ladders/${this.state.selectedLadder}?offset=${(page-1)*this.state.ladderLimit}&limit=${this.state.ladderLimit}`)
-      .then(res => res.json())
-      .then((data) => {
-        this.setState({
-          entries: data.entries,
-          currentPage: page
-        })
-      })
-      .catch(console.log)
-  }
-
-  onLimitChange (limit) {
-    fetch(`https://guarded-falls-96614.herokuapp.com/http://api.pathofexile.com/ladders/${this.state.selectedLadder}?limit=${limit}`)
-      .then(res => res.json())
-      .then((data) => {
-        this.setState({
-          entries: data.entries,
-          ladderLimit: limit
-        })
-      })
-      .catch(console.log)
   }
 }
 
