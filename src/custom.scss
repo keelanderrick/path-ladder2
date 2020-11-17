@@ -9,6 +9,16 @@
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
+.ladder-navigator {
+  display: flex;
+  margin: auto;
+  width: 10%;
+}
+
+.ladder-navigator > button {
+  margin: 0.25rem;
+}
+
 .underline {
   text-decoration: underline;
 }
